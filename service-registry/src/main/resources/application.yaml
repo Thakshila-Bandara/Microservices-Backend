@@ -1,0 +1,16 @@
+server:
+  port: 8761   #default port that service-registry runs
+
+spring:
+  application:
+    name: service-registry
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    register-with-eureka: false #don't register with eureka
+    fetch-registry: false
+    service-url:
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
