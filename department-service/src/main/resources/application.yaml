@@ -3,3 +3,12 @@ spring:
     name: department-service
   config:
     import: optional:configserver:http://localhost:8088
+  data:
+    mongodb:
+      username: admin
+      password: password
+      host: localhost
+      authentication-database: admin
+      database: department-service
+      port: 27017
+
