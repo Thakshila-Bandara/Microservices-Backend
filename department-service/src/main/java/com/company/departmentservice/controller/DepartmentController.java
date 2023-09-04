@@ -3,10 +3,8 @@ package com.company.departmentservice.controller;
 import com.company.departmentservice.model.Department;
 import com.company.departmentservice.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/department")
@@ -19,5 +17,11 @@ public class DepartmentController {
     public Long save(@RequestBody Department department){
 
         return departmentService.save(department);
+    }
+
+    @GetMapping
+    public Department findDepartmentById(@RequestParam Long id){
+
+        return departmentService.findDepartmentById(id);
     }
 }

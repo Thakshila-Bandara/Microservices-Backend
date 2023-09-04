@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface DepartmentRepository extends MongoRepository<Department, Long> {
 
 
+    public Department findDepartmentById(Long id);
 
 }
