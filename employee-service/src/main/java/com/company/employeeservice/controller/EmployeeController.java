@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -30,6 +32,18 @@ public class EmployeeController {
         }else{
 
             return new ResponseEntity<Employee>(employeeService.findEmployeeById(id), HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/dep-id")
+    public ResponseEntity findEmployeeByDepartmentId(@RequestParam Long depId){
+
+        if(employeeService.findEmployeeByDepartmentId(depId).isEmpty()){
+
+            return new ResponseEntity<List<Employee>>(HttpStatus.NOT_FOUND);
+        }else{
+
+            return new ResponseEntity<List<Employee>>(employeeService.findEmployeeByDepartmentId(depId), HttpStatus.OK);
         }
     }
 }
